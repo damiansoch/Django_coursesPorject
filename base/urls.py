@@ -18,10 +18,21 @@ Including another URLconf
 # project-level urls.py
 from django.contrib import admin
 from django.urls import include, path
+from api.models import CourseResource, CategoryResource
+from tastypie.api import Api
+
+course_resource = CourseResource()
+category_resource = CategoryResource()
+api = Api(api_name="v1.0.0")
+
+api.register(course_resource)
+api.register(category_resource)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path(
-        "shop/", include("shop.urls", namespace="courses")
-    ),  # Using namespace defined in shop.urls
+    path("shop/", include("shop.urls", namespace="courses")),
+    # path("api/", include(category_resource.urls)),
+    # path("api/", include(course_resource.urls)),
+    # instead of the above ones, we will use the api because they are registered there
+    path("api/", include(api.urls)),
 ]
