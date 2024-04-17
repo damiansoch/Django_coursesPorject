@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+{% block title %}{{ course.title|split_first }}... - details{% endblock %}
+{%block content%}
+<h2>{{course.title}}</h2>
+<table class="table table-striped table-bordered table-hover">
+    <tbody>
+    <tr>
+        <th>Title</th>
+        <td class="text-center" style="padding: 0;">
+            <a href="{% url 'courses:detail' course.id %}"
+               style="display: block; width: 100%; height: 100%; padding: 20px; color: inherit; text-decoration: none; line-height: normal;">
+                {{ course.title }}
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td class="text-center">${{ course.price }}</td>
+    </tr>
+    <tr>
+        <th>Student Quantity</th>
+        <td class="text-center">{{ course.students_qty }}</td>
+    </tr>
+    <tr>
+        <th>Reviews Quantity</th>
+        <td class="text-center">{{ course.reviews_qty }}</td>
+    </tr>
+    <tr>
+        <th>Created</th>
+        <td class="text-center">{{ course.created_at }}</td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td class="text-center">{{ course.category.title }}</td>
+    </tr>
+    <tr>
+        <th>Action</th>
+        <td class="text-center">
+            <button class="btn btn-primary">Buy</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+{%endblock%}

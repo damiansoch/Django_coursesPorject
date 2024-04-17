@@ -16,7 +16,10 @@
     <tbody>
     {% for course in courses %}
     <tr>
-        <td>{{ course.title}}</td>
+        <td style="padding: 0;"><a href="{% url 'courses:detail' course.id %}"
+                                   style="display: block; width: 100%; height: 100%; padding: 20px; color: inherit; text-decoration: none; line-height: normal;">
+            {{ course.title }}
+        </a></td>
         <td>${{ course.price }}</td>
         <td>{{ course.students_qty }}</td>
         <td>{{ course.reviews_qty }}</td>
@@ -33,3 +36,5 @@
     </tbody>
 </table>
 {%endblock%}
+
+

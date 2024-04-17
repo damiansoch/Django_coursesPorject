@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Not Found{% endblock %}
+{%block content%}
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="alert alert-danger" role="alert" style="max-width: 600px;">
+        <h4 class="alert-heading">{{error}}</h4>
+        <p>We're sorry, but the resource you are looking for does not exist or may have been removed.</p>
+        <hr>
+        <a href="{% url 'courses:list' %}" class="btn btn-outline-secondary">Return to Course List</a>
+    </div>
+</div>
+{%endblock%}
